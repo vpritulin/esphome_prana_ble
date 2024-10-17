@@ -207,6 +207,26 @@ bool PranaBLEHub::send_command(PranaCommand command, bool update) {
   return status == 0;
 }
 
+bool PranaBLEHub::set_brightness(uint8_t brightness_value) {
+  if (!this->is_connected()) {
+    ESP_LOGW(TAG, "Not connected to device. Cannot set brightness.");
+    return false;
+  }
+
+  if (brightness_value < 1 || brightness_value > 6) {
+    ESP_LOGW(TAG, "Invalid brightness value: %d. Must be between 1 and 6.", brightness_value);
+    return false;
+  }
+
+  PranaCmdPacket packet(CMD_BRIGHTNESS);
+  packet.command = brightness_value; 
+
+  ESP_LOGI(TAG, "Setting brightness to: %d", brightness_value);
+
+  return this->send_packet(&packet, true) == 0;
+}
+
+
 uint8_t PranaBLEHub::send_packet(PranaCmdPacket *pkt, bool update)
 {
   uint8_t result = this->send_data((uint8_t *) pkt, sizeof(pkt));
