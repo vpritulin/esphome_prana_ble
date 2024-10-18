@@ -26,7 +26,7 @@ struct PranaCmdPacket
   uint8_t command;
   uint8_t brightness;
 
-  PranaCmdPacket(uint8_t command)
+  PranaCmdPacket(uint8_t command, uint8_t brightness_value = 0)
   {
     std::copy(std::begin(PRANA_MAGIC), std::end(PRANA_MAGIC), std::begin(magic));
     prefix = PRANA_CMD_PREFIX;
