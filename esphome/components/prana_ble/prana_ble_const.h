@@ -24,12 +24,14 @@ struct PranaCmdPacket
   uint8_t magic[2];
   uint8_t prefix;
   uint8_t command;
+  uint8_t brightness;
 
-  PranaCmdPacket(uint8_t command)
+  PranaCmdPacket(uint8_t command, uint8_t brightness_value = 0)
   {
     std::copy(std::begin(PRANA_MAGIC), std::end(PRANA_MAGIC), std::begin(magic));
     prefix = PRANA_CMD_PREFIX;
     this->command = command;
+    this->brightness = brightness_value;
   }
 } __attribute__((packed));
 
