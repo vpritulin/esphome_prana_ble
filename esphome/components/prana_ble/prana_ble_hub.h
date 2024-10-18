@@ -17,8 +17,6 @@
 namespace esphome {
 namespace prana_ble {
 
-
-
 namespace espbt = esphome::esp32_ble_tracker;
 
 // Forward declare PranaBLEClient
@@ -71,9 +69,9 @@ class PranaBLEHub : public esphome::ble_client::BLEClientNode, public PollingCom
   bool is_connected() { return this->node_state == espbt::ClientState::ESTABLISHED; }
   bool is_connection_enabled() { return this->keep_connected_; }
 
-  bool has_status() { return true;} //this->status != nullptr; }
+  bool has_status() { return true; }
 
-  /** Register a `BedJetClient` child component. */
+  /** Register a `PranaBLEClient` child component. */
   void register_child(PranaBLEClient *obj);
 
   /** Set the status timeout.
