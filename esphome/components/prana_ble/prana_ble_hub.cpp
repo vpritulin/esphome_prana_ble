@@ -219,7 +219,8 @@ bool PranaBLEHub::set_brightness(uint8_t brightness_value) {
   }
 
   PranaCmdPacket packet(CMD_BRIGHTNESS);
-  packet.command = brightness_value; 
+  packet.command = CMD_BRIGHTNESS;
+  packet.brightness = brightness_value;
 
   ESP_LOGI(TAG, "Setting brightness to: %d", brightness_value);
 
