@@ -60,6 +60,8 @@ class PranaBLEHub : public esphome::ble_client::BLEClientNode, public PollingCom
   bool set_fan_step(PranaFan fan, bool up);
   bool set_fan_on(PranaFan fan);
 
+  uint8_t get_brightness() const { return this->status.brightness; }
+
   /** Send the `button`. */
   bool send_command(const PranaCommand command, bool update=false);
 
