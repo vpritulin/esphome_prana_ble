@@ -1,7 +1,7 @@
 #pragma once
 
 #include "esphome/core/component.h"
-#include "light_output.h"
+
 
 
 namespace esphome {
