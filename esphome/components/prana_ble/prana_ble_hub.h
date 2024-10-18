@@ -53,6 +53,7 @@ class PranaBLEHub : public esphome::ble_client::BLEClientNode, public PollingCom
   bool command_fan_in_speed_up() { return send_command(CMD_FAN_IN_SPEED_UP, true); }
   bool command_fan_in_speed_down() { return send_command(CMD_FAN_IN_SPEED_DOWN, true); }
   bool command_fan_in_off() { return send_command(CMD_FAN_IN_OFF, true); }
+  bool set_brightness(uint8_t brightness_value); 
 
   short get_fan_speed(PranaFan fan); 
   bool set_fan_speed(PranaFan fan, short new_speed);

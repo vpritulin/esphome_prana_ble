@@ -219,6 +219,29 @@ uint8_t PranaBLEHub::send_packet(PranaCmdPacket *pkt, bool update)
   return result;
 }
 
+bool PranaBLEHub::set_brightness(uint8_t brightness_value) {
+  if (!this->is_connected()) {
+    ESP_LOGW(TAG, "Not connected to device. Cannot set brightness.");
+    return false;
+  }
+
+  if (brightness_value < 1 || brightness_value > 6) {
+    ESP_LOGW(TAG, "Invalid brightness value: %d. Must be between 1 and 6.", brightness_value);
+    return false;
+  }
+
+  // Create the BLE command packet with beef0402 (brightness toggle)
+  PranaCmdPacket packet(CMD_BRIGHTNESS);
+  packet.command = 0x02; // beef0402 for brightness toggle
+  packet.brightness = brightness_value;  // Set the brightness level between 1 and 6
+
+  ESP_LOGI(TAG, "Setting brightness to: %d", brightness_value);
+
+  // Send the packet to adjust brightness
+  return this->send_packet(&packet, true) == 0;
+}
+
+
 uint8_t PranaBLEHub::send_data(uint8_t data[], uint8_t len) {
   char buffer [40];
   for(int j = 0; j < len; j++)
