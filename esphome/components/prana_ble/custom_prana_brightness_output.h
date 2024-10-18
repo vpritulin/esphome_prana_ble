@@ -1,5 +1,5 @@
 #include "esphome/core/component.h"
-#include "esphome/core/log.h"  // Правильное подключение для логирования
+#include "esphome/core/log.h"
 #include "esphome/components/output/float_output.h"
 #include "esphome/components/prana_ble/prana_ble_hub.h"
 
