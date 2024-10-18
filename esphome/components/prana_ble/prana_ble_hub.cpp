@@ -560,5 +560,16 @@ void PranaBLEHub::register_child(PranaBLEClient *obj) {
   obj->set_parent(this);
 }
 
+void PranaBLEHub::on_status(const PranaStatusPacket *data) {
+  ESP_LOGV(TAG, "Handling status packet");
+
+  if (data == nullptr)
+    return;
+
+  this->status = *data;
+
+  ESP_LOGI(TAG, "Current brightness is: %d", this->status.brightness);
+}
+
 }  // namespace prana_ble
 }  // namespace esphome

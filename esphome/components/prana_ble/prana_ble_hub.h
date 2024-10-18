@@ -65,6 +65,7 @@ class PranaBLEHub : public esphome::ble_client::BLEClientNode, public PollingCom
   /** Send the `button`. */
   bool send_command(const PranaCommand command, bool update=false);
 
+  uint8_t get_brightness() const { return this->status.brightness; }
 
   /** @return `true` if the `BLEClient::node_state` is `ClientState::ESTABLISHED`. */
   bool is_connected() { return this->node_state == espbt::ClientState::ESTABLISHED; }
