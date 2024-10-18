@@ -24,7 +24,7 @@ struct PranaCmdPacket
   uint8_t magic[2];
   uint8_t prefix;
   uint8_t command;
-  uint8_t brightness
+  uint8_t brightness;
 
   PranaCmdPacket(uint8_t command)
   {
