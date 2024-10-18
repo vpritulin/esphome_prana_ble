@@ -31,7 +31,7 @@ struct PranaCmdPacket
     std::copy(std::begin(PRANA_MAGIC), std::end(PRANA_MAGIC), std::begin(magic));
     prefix = PRANA_CMD_PREFIX;
     this->command = command;
-    brightness = 0;
+    this->brightness = brightness_value;
   }
 } __attribute__((packed));
 
